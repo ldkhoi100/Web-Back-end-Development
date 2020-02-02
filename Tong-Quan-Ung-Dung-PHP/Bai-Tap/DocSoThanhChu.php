@@ -17,6 +17,7 @@
             border-radius: 2px;
             padding: 10px 32px;
             font-size: 16px;
+            background-color: red;
         }
     </style>
 </head>
@@ -60,38 +61,40 @@
         90                  => 'ninety',
         100                 => 'hundred',
         );
-            switch ($number) {
-            case $number < 21:
-                $string = $dictionary[$number];
-                break;
-            case $number < 100:
-                $tens   = ((int) ($number / 10)) * 10; //Khai báo số nguyên integer
-                $units  = $number % 10;
-                $string = $dictionary[$tens];
-                if ($units != null) {
-                    $string .= ' ' . $dictionary[$units];
-                }
-                break;
-            case $number < 1000:
-                $hundreds  = $number / 100;
-                $remainder = $number % 100;
-                $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
-                if ($remainder != null) {
-                    $string .= ' and ' . convert_number_to_words($remainder);
-                }
-                break;
-            default:
-                $string = "out of ability";
+        switch ($number) {
+        case $number < 21:
+            $string = $dictionary[$number];
+            break;
+        case $number < 100:
+            $tens   = ((int) ($number / 10)) * 10; //Khai báo số nguyên integer
+            $units  = $number % 10;
+            $string = $dictionary[$tens];
+            if ($units != null) {
+                $string .= ' ' . $dictionary[$units];
             }
+            break;
+        case $number < 1000:
+            $hundreds  = (int)($number / 100);
+            $remainder = $number % 100;
+            $string = $dictionary[$hundreds] . ' ' . $dictionary[100];
+            if (empty($remainder)) {
+                $string .= ' and ' . convert_number_to_words($remainder);
+            }
+            break;
+        default:
+            $string = "out of ability";
+        }
         return $string;
     }
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $number = $_POST['number'];
         if($number < 0 || !is_numeric($number)){
+            echo '<br>';
             echo 'Wrong number';
         }
         else{
-        echo $number . ': ' . ucfirst(convert_number_to_words($number));
+        echo '<br>';
+        echo $number . ': ' . ucfirst(convert_number_to_words($number)); //ucfirst(str): Viết hoa chữ cái đầu tiên trong 1 chuỗi
         }
     }
     ?>
