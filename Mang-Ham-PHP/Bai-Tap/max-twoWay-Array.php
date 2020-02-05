@@ -56,17 +56,16 @@
                 echo '</tr>';
             }
             echo '</table>';
+            
             // Max value
             for($i=0;$i<$rows;$i++){
                 for($j = 0; $j<$cols; $j++){
                     if($max == null){
                         $max = $array[$i][$j];
-                        //$position = '[' .$i. ',' . $j . ']';
                     }
                     else{
                         if($max < $array[$i][$j]){
                             $max = $array[$i][$j];
-                            //$position = '[' .$i. ',' . $j . ']';
                         }
                     }
                 }
