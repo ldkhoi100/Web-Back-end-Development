@@ -13,16 +13,16 @@
     $point = new MoveablePoint();
     $point->setXSpeed(5);
     $point->setySpeed(10);
-    $point->move();
+    print_r($point->move());
     echo $point->toString();
     echo '<br>';
     $point->setSpeed(20, 40);
     $point->move();
     echo $point->toString();
-    echo '<br>';
-    $point->setXSpeed(10);
-    $point->move();
-    echo $point->toString();
+    // echo '<br>';
+    // $point->setXSpeed(10);
+    // $point->move();
+    // echo $point->toString();
     ?>
 </body>
 
