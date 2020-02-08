@@ -3,8 +3,8 @@ $array = [];
 $error[] = null;
 
 if (isset($_POST['submit'])) {
-    $rows = (int) ($_POST['rows']);
-    $cols = (int) ($_POST['cols']);
+    $rows = $_POST['rows'];
+    $cols = $_POST['cols'];
     $inputCol = $_POST['inputCol'];
 
     // Call Function creat and show Matrix
