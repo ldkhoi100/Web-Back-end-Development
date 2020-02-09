@@ -16,7 +16,7 @@
             $element = $_POST['element'];
         }
         $array = array(10, 4, 6, 7, 8, 16, 5, 2, 35, 23, 17);
-        print_r($array);
+        echo implode(",",$array);
         ?>
         <p>Nhập phần tử cần xóa: <input type="text" value="<?php echo isset($element) ? $element : "" ?>"
                 name='element'></p>
@@ -37,7 +37,7 @@
         }
         unset($array[count($array) - 1]); // Xóa phần tử cuối cùng
         echo 'Sau khi xóa phần tử ' . $element . ':<br>';
-        print_r($array);
+        echo implode(",",$array);
     }
     ?>
 </body>

@@ -31,17 +31,13 @@
         array_push($thirdArray, $secondArray[$i]);
     }
     echo 'Mảng số 1 gồm 10 phần tử với số ngẫu nhiên: <br>';
-    foreach ($firstArray as $value) {
-        echo $value . ', ';
-    }
+    echo implode(",",$firstArray);
+
     echo '<br><br> Mảng số 2 gồm 10 phần tử với số ngẫu nhiên: <br>';
-    foreach ($secondArray as $value) {
-        echo $value . ', ';
-    }
+    echo implode(",",$secondArray);
+
     echo '<br><br> Mảng số 3 sau khi đã gộp cả 2 mảng trên: <br>';
-    foreach ($thirdArray as $value) {
-        echo $value . ', ';
-    }
+    echo implode(",",$thirdArray);
     ?>
 </body>
 

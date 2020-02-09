@@ -64,13 +64,7 @@ function creatArray($number)
             }
         }
         echo '<b style="color:blue;"><u>Mảng gồm ' . $number . ' phần tử là: </u></b><br><br>';
-        for ($i = 0; $i < count($array); $i++) {
-            echo $array[$i];
-            echo ', ';
-            if (($i + 1) % 10 === 0) {
-                echo '<br>';
-            }
-        }
+        echo implode(",",$array);
         echo '<br><br>';
         echo 'Phần tử nhỏ nhất: ' . $min . '<br>';
         echo 'Tại vị trí: ' . rtrim($position, ", ") . '<br>';
