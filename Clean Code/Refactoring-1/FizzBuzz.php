@@ -6,11 +6,14 @@ class FizzBuzz
 
     public function __construct($number)
     {
-        if ($number % 3 == 0 && $number % 5 == 0) {
+        $isFizz = $number % 3 == 0;
+        $isBuzz = $number % 5 == 0;
+
+        if ($isFizz && $isBuzz) {
             $this->status =  "FizzBuzz";
-        } elseif ($number % 3 == 0) {
+        } elseif ($isFizz) {
             $this->status = "Fizz";
-        } elseif ($number % 5 == 0) {
+        } elseif ($isBuzz) {
             $this->status = "Buzz";
         } else {
             $this->status =  $number . "";
