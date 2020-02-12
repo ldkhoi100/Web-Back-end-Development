@@ -31,4 +31,9 @@ class QuadraticEquation
     {
         return (-$this->b) / (2 * $this->a);
     }
+    // Phương trình có 1 nghiệm nếu a = 0; b,c khác 0
+    public function getOneRoot()
+    {
+        return (-$this->c) / ($this->b);
+    }
 }

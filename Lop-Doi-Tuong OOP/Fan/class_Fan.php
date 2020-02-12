@@ -13,12 +13,77 @@ class Fan
     {
     }
 
-    function toString(){
-        if($this->status){
-            return 'Speed: ' .$this->speed . ', color: ' .$this->color . ', radius: ' . $this->radius . ': fan is on';
-        }
-        else{
-            return 'Color: ' .$this->color . ', radius: ' . $this->radius . ': fan is off';
+    public function getSpeed()
+    {
+        return $this->speed;
+    }
+
+    public function getSatus()
+    {
+        return $this->status;
+    }
+
+    public function getRadius()
+    {
+        return $this->radius;
+    }
+
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    // Set Speed
+    public function setSpeedFast()
+    {
+        $this->speed = self::FAST;
+        return $this;
+    }
+
+    public function setSpeedMedium()
+    {
+        $this->speed = self::MEDIUM;
+        return $this;
+    }
+
+    public function setSpeedSlow()
+    {
+        $this->speed = self::SLOW;
+        return $this;
+    }
+
+    // Set status Fan
+    public function setOn()
+    {
+        $this->status = true;
+        return $this;
+    }
+
+    public function setOff()
+    {
+        $this->status = false;
+        return $this;
+    }
+
+    public function setRadius($radius)
+    {
+        $this->radius = $radius;
+        return $this;
+    }
+
+    public function setColor($color)
+    {
+        $this->color = $color;
+        return $this;
+    }
+
+    // Show
+    function toString()
+    {
+        if ($this->status) {
+            return 'Speed: ' . $this->speed . '<br> Color: ' . $this->color . '<br> Radius: ' . $this->radius . '<br> Status: Fan is on';
+        } else {
+            return 'Color: ' . $this->color . '<br> Radius: ' . $this->radius . '<br> Status: Fan is off';
         }
     }
 }

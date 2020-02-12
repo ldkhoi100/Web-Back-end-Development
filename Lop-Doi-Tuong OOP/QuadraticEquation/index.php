@@ -1,3 +1,41 @@
+<?php
+include './function.php';
+
+$error[] = null;
+$result = null;
+
+if (isset($_POST['result'])) {
+    $first = $_POST['first'];
+    $second = $_POST['second'];
+    $third = $_POST['third'];
+
+    if (!checkIsvalid($first)) {
+        try {
+            throw new Exception('Hãy nhập đúng số thứ nhất');
+        } catch (Exception $e) {
+            $error[0] = $e->getMessage();
+        }
+    }
+
+    if (!checkIsvalid($second)) {
+        try {
+            throw new Exception('Hãy nhập đúng số thứ hai');
+        } catch (Exception $e) {
+            $error[1] = $e->getMessage();
+        }
+    }
+
+    if (!checkIsvalid($third)) {
+        try {
+            throw new Exception('Hãy nhập đúng số thứ ba');
+        } catch (Exception $e) {
+            $error[2] = $e->getMessage();
+        }
+    }
+    $result = Calculator_QuadraticEquation($first, $second, $third);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,48 +47,22 @@
 </head>
 
 <body>
-    <?php
-    if (isset($_POST['result'])) {
-        $first = $_POST['first'];
-        $second = $_POST['second'];
-        $third = $_POST['third'];
-    }
-    ?>
+    <!-- Form nhập số từ người dùng -->
     <form action="" method="POST">
-        <p>Nhập số thứ nhất: <input type="text" name="first" id="" value="<?php echo isset($first) ? $first : '' ?>"></p>
-        <p>Nhập số thứ hai: <input type="text" name="second" id="" value="<?php echo isset($second) ? $second : ''; ?>"></p>
-        <p>Nhập số thứ ba: <input type="text" name="third" id="" value="<?php echo isset($third) ? $third : ''; ?>"></p>
+        <p>Nhập số thứ nhất: <input type="text" name="first" id=""
+                value="<?php echo isset($first) ? $first : '' ?>"><span><?= $error[0] ?? null ?></span>
+        </p>
+        <p>Nhập số thứ hai: <input type="text" name="second" id=""
+                value="<?php echo isset($second) ? $second : ''; ?>"><span><?= $error[1] ?? null ?></span>
+        </p>
+        <p>Nhập số thứ ba: <input type="text" name="third" id=""
+                value="<?php echo isset($third) ? $third : ''; ?>"><span><?= $error[2] ?? null ?></span>
+        </p>
         <input type="submit" value="Kết quả" name='result'>
     </form>
-    <?php include 'class_QuadraticEquation.php';
-    function checkIsvalid($number)
-    {
-        return is_numeric($number) && !empty($number);
-    }
 
-    if (isset($_POST['result'])) {
-        $first = $_POST['first'];
-        $second = $_POST['second'];
-        $third = $_POST['third'];
-
-        if (!checkIsvalid($first) || !checkIsvalid($second) || !checkIsvalid($third)) {
-            echo "Error Value";
-        } else {
-            $quadratic = new QuadraticEquation($first, $second, $third);
-            $delta = $quadratic->getDiscriminant();
-            if ($delta == 0) { // 1 -8 16
-                echo "Phương trình $first(x)^2 + $second(x) + $third có nghiệm kép: <br>";
-                echo 'x1 = x2 = ' . $quadratic->getBothRoot();
-            } else if ($delta < 0) {  // 3 2 5
-                echo 'Phương trình vô nghiệm';
-            } else { //1 -5 6
-                echo "Phương trình $first(x)^2 + $second(x) + $third có 2 nghiệm: <br>";
-                echo 'x1 = ' . $quadratic->getRoot1() . '<br>';
-                echo 'x2 = ' . $quadratic->getRoot2() . '<br>';
-            }
-        }
-    }
-    ?>
+    <!-- Trả về kết quả tính toán -->
+    <span><?= isset($result) ? $result : ''; ?></span>
 </body>
 
 </html>

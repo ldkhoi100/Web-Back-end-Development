@@ -76,8 +76,8 @@ function isValid($number)
     }
     ?>
     <form action="" method='POST'>
-        <p>Nhập số dòng: <input type="text" name='rows' value='<?php echo isset($rows) ? $rows : '10'; ?>'></p>
-        <p>Nhập số cột: <input type="text" name='cols' value='<?php echo isset($cols) ? $cols : '10'; ?>'></p>
+        <p>Nhập số dòng: <input type="text" name='rows' value='<?= isset($rows) ? $rows : null; ?>'></p>
+        <p>Nhập số cột: <input type="text" name='cols' value='<?= isset($cols) ? $cols : null; ?>'></p>
         <p>Nhập độ dài số ngẫu nhiên:</p>
         <p>Từ số: <input type="text" name='first' value='<?php echo isset($first) ? $first : '1'; ?>'></p>
         <p>Đến số: <input type="text" name='last' value='<?php echo isset($last) ? $last : '100'; ?>'></p>
