@@ -1,30 +1,71 @@
 <?php
 class StopWatch
 {
-    /**
-     * @var $startTimes array The start times of the StopWatches
-     */
-    private static $startTimes = array();
+    private $beginTime;
+    private $endTime;
 
-    /**
-     * Start the timer
-     *
-     * @param $timerName string The name of the timer
-     * @return void
-     */
-    public static function start($timerName = 'default')
+    # __construct method
+    public function __construct()
     {
-        self::$startTimes[$timerName] = microtime(true);
+        $this->beginTime = $this->getMicroTime();
     }
 
     /**
-     * Get the elapsed time in seconds
-     *
-     * @param $timerName string The name of the timer to start
-     * @return float The elapsed time since start() was called
+     * Get the value of beginTime
      */
-    public static function elapsed($timerName = 'default')
+
+    public function getBeginTime()
     {
-        return microtime(true) - self::$startTimes[$timerName];
+        return $this->beginTime;
+    }
+
+    /**
+     * Get the value of endTime
+     */
+
+    public function getEndTime()
+    {
+        return $this->endTime;
+    }
+
+    /**
+     * Set new value for beginTime to begin record
+     */
+    public function beginRecord()
+    {
+        $this->beginTime = $this->getMicroTime();
+    }
+
+    /**
+     * Set new value for stopTime to stop record
+     */
+    public function endRecord()
+    {
+        $this->endTime = $this->getMicroTime();
+    }
+
+    /**
+     * Return recorder time
+     */
+    public function getElapsedTime()
+    {
+        return round($this->endTime - $this->beginTime);
+    }
+
+    /**
+     * A method to test how MicroTime() function works
+     */
+    public function testMicroTime()
+    {
+        return microtime(true) * 1000;
+    }
+
+    /**
+     * A method to test how MicroTime() function works
+     * Return a value using round() function
+     */
+    public function getMicroTime()
+    {
+        return round(microtime(true) * 1000);
     }
 }

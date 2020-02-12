@@ -9,13 +9,18 @@
 </head>
 
 <body>
-    <?php include 'class_Point2D.php';
+    <?php include './class_Point3D.php';
+
     $point2d = new Point2D();
     $point2d->setX(3);
     $point2d->setY(5);
+
     echo $point2d->toString();
+
     $point2d->setXY(4, 6);
+
     echo $point2d->toString();
+
     echo $point2d->getXY()[0];
 
     $point3d = new Point3D();
