@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include './class_Cylinder.php';
+    <?php include './Cylinder.php';
 
     $circle = new Circle(5, 'red');
     echo $circle->toString();

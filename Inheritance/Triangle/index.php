@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <?php include 'class_Triangle.php';
+    <?php include './Triangle.php';
     if (isset($_POST['submit'])) {
         $first = $_POST['first'];
         $second = $_POST['second'];

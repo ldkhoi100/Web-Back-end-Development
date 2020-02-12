@@ -1,31 +1,18 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: dungduong
- * Date: 11/21/18
- * Time: 17:17
- */
 include_once('Circle.php');
 include_once('Cylinder.php');
 include_once('Rectangle.php');
 include_once('Square.php');
-//include_once('Resizeable.php');
-
-
-
-
-
-
-
 
 $circle[0] = new Circle('Circle 01', 3);
-echo 'Before: <br>';
-echo 'Circle Radius: ' . $circle[0]->getRadius() . '<br>';
-echo 'Circle area: ' . $circle[0]->calculateArea() . '<br />';
-echo 'Circle perimeter: ' . $circle[0]->calculatePerimeter() . '<br /> <br />';
+// echo 'Before: <br>';
+// echo 'Circle Radius: ' . $circle[0]->getRadius() . '<br>';
+// echo 'Circle area: ' . $circle[0]->calculateArea() . '<br />';
+// echo 'Circle perimeter: ' . $circle[0]->calculatePerimeter() . '<br /> <br />';
+
 $circle[0]->resize();
-echo 'Last: <br>';
+
+//echo 'Last: <br>';
 echo 'Circle Radius: ' . $circle[0]->getRadius() . '<br>';
 echo 'Circle area: ' . $circle[0]->calculateArea() . '<br />';
 echo 'Circle perimeter: ' . $circle[0]->calculatePerimeter() . '<br /> <br />';

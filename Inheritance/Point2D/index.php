@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include './class_Point3D.php';
+    <?php include './Point3D.php';
 
     $point2d = new Point2D();
     $point2d->setX(3);

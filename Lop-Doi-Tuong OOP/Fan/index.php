@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include 'class_Fan.php';
+    <?php include './Fan.php';
 
     $fan1 = new Fan();
     $fan1->setSpeedFast()->setRadius(10)->setColor('Red')->setOn();

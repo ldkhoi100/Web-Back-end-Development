@@ -9,20 +9,25 @@
 </head>
 
 <body>
-    <?php include 'class_Point.php';
+    <?php include './MoveablePoint.php';
+
     $point = new MoveablePoint();
     $point->setXSpeed(5);
     $point->setySpeed(10);
+
     print_r($point->move());
+
     echo $point->toString();
     echo '<br>';
     $point->setSpeed(20, 40);
+
+    $point->move();
+    echo '<br>';
+    echo $point->toString();
+    echo '<br>';
+    $point->setXSpeed(10);
     $point->move();
     echo $point->toString();
-    // echo '<br>';
-    // $point->setXSpeed(10);
-    // $point->move();
-    // echo $point->toString();
     ?>
 </body>
 

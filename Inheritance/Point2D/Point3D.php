@@ -1,4 +1,4 @@
-<?php include './class_Point2D.php';
+<?php include './Point2D.php';
 
 class Point3D extends Point2D
 {
