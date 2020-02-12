@@ -13,7 +13,9 @@
 
     $fan1 = new Fan();
     $fan1->setSpeedFast()->setRadius(10)->setColor('Red')->setOn();
-    echo $fan1->toString();
+
+    $fan2 = new Fan();
+    $fan2->setSpeedMedium()->setRadius(30)->setColor('Blue')->setOff();
     ?>
 </body>
 

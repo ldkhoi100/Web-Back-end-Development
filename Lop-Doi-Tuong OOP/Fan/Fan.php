@@ -81,9 +81,9 @@ class Fan
     function toString()
     {
         if ($this->status) {
-            return 'Speed: ' . $this->speed . '<br> Color: ' . $this->color . '<br> Radius: ' . $this->radius . '<br> Status: Fan is on';
+            return 'Speed: ' . $this->speed . "<br> Color: <b style = 'color: {$this->color};'>$this->color</b>" . '<br> Radius: ' . $this->radius . '<br> Status: Fan is on';
         } else {
-            return 'Color: ' . $this->color . '<br> Radius: ' . $this->radius . '<br> Status: Fan is off';
+            return "Color: <b style = 'color: {$this->color};'>$this->color</b>" . '<br> Radius: ' . $this->radius . '<br> Status: Fan is off';
         }
     }
 }

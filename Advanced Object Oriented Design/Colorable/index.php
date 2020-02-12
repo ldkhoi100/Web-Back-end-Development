@@ -16,10 +16,3 @@ foreach ($rectangle as $key => $value) {
         $result .= $rectangle[$key]->howToColor() . "<br>";
     }
 }
-
-// foreach ($animals as $animal) {
-//     echo $animal->makeSound() . '<br>';
-//     if ($animal instanceof Chicken) { //Kiểm tra function có tồn tại hay không, nếu có function đó thì in ra
-//         echo $animal->howtoEat();
-//     }
-// }

@@ -21,7 +21,7 @@
         $third = $_POST['third'];
         $color = $_POST['color'];
 
-        if (!checkIsvalid($first) || !checkIsvalid($second) || !checkIsvalid($third) || $color = null) {
+        if (!checkIsvalid($first) || !checkIsvalid($second) || !checkIsvalid($third) || empty($color)) {
             try {
                 throw new Exception("Nhập sai, hãy nhập lại đúng số nguyên dương");
             } catch (Exception $e) {
@@ -46,7 +46,7 @@
     <!-- Show error -->
     <div><?= isset($error) ? $error : ''; ?></div>
     <!-- Show result -->
-    <div><?= isset($result) ? $result : ''; ?></div>
+    <div><?= isset($result) ? $result : ''; ?></div> <br>
     <!-- Show color -->
     <div class='login' style="background-color: <?= isset($color) ? $color : ''; ?>; height:300px; width:200px;">
     </div>

@@ -15,17 +15,10 @@
     $point2d->setX(3);
     $point2d->setY(5);
 
-    echo $point2d->toString();
-
     $point2d->setXY(4, 6);
-
-    echo $point2d->toString();
-
-    echo $point2d->getXY()[0];
 
     $point3d = new Point3D();
     $point3d->setX(2);
-    echo $point3d->toString();
     ?>
 </body>
 
