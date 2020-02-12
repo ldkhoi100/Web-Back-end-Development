@@ -11,13 +11,15 @@
 <body>
     <?php include './Cylinder.php';
 
+    $result = null;
+
     $circle = new Circle(5, 'red');
-    echo $circle->toString();
+    $result .= $circle->toString();
     $circle->setRadius_Color(7, 'blue');
-    echo $circle->toString();
+    $result .= $circle->toString();
 
     $cylinder = new Cylinder(7, 'blue', 5);
-    echo $cylinder->toString();
+    $result .= $cylinder->toString();
     ?>
 </body>
 

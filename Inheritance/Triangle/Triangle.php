@@ -1,10 +1,10 @@
 <?php
 class Triangle
 {
-    public float $side1;
-    public float $side2;
-    public float $side3;
-    public string $color;
+    public $side1;
+    public $side2;
+    public $side3;
+    public $color;
 
     public function __construct($side1, $side2, $side3, $color)
     {
@@ -54,12 +54,12 @@ class Triangle
         $this->side1 = $new_color;
     }
 
-    public function getABCCo()
+    public function getSide123_Color()
     {
         return array($this->side1, $this->side2, $this->side3, $this->color);
     }
 
-    public function setSide1BCCo($new_Side1, $new_Side2, $new_Side3, $new_color)
+    public function setSide123_Color($new_Side1, $new_Side2, $new_Side3, $new_color)
     {
         $this->side1 = $new_Side1;
         $this->side2 = $new_Side2;

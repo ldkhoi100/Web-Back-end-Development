@@ -15,7 +15,7 @@ class Rectangle extends Shape implements Colorable
     public float $height;
     public string $color;
 
-    public function __construct($name, $width, $height, string $color = 'red')
+    public function __construct($name, $width, $height, $color = 'red')
     {
         parent::__construct($name);
         $this->width = $width;
@@ -35,6 +35,6 @@ class Rectangle extends Shape implements Colorable
 
     public function howToColor()
     {
-        return "Color {$this->color} all four sides.";
+        return "Color <b style='color: " . $this->color . "'> " . $this->color . "</b>" . " all four sides.";
     }
 }
