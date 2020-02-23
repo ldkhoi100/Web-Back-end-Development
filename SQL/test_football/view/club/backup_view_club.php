@@ -21,11 +21,9 @@
             <td><?php echo $club->stadium ?></td>
             <td><?php echo $club->coach ?></td>
             <td> <a href="view_club.php?page=backupfile&id=<?php echo $club->id; ?>" class="btn btn-warning btn-sm">Back
-                    Up
-                    File</a></td>
+                    Up File</a></td>
             <td> <a href="view_club.php?page=deleteForever&id=<?php echo $club->id; ?>"
-                    class="btn btn-danger btn-sm">Delete
-                    Forever</a>
+                    class="btn btn-danger btn-sm">Delete Forever</a>
             </td>
             <?php endforeach; ?>
     </tbody>

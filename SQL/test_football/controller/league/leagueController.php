@@ -14,7 +14,7 @@ class LeagueController
 
     public function __construct()
     {
-        $connection = new DBConnection("mysql:host=localhost;dbname=football", "root", "");
+        $connection = new DBConnection("mysql:host=localhost;dbname=football;charset=utf8", "root", "");
         $this->leagueDB = new LeagueDB($connection->connect());
     }
 
@@ -53,12 +53,13 @@ class LeagueController
         } else {
             $id = $_POST['id'];
             $this->leagueDB->backUpFileDeleted($id);
+            header('refresh:2;view_league.php?page=backup_league');
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this league is backuped
                     </div>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
             echo "<a href='view_league.php' class='btn btn-info'>Go to list league</a>";
             //header('Location: view_league.php?page=backup_league');
-            header('refresh:2;view_league.php?page=backup_league');
         }
     }
 
@@ -72,12 +73,13 @@ class LeagueController
             $id = $_POST['id'];
             $this->leagueDB->delete($id);
             $message = "Delete Success";
+            header("refresh:2;view_league.php");
             //include 'delete_league.php';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this league is deleted
                     </div>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
             echo "<a href='view_league.php' class='btn btn-info'>Go to list league</a>";
-            header("refresh:2;view_league.php");
         }
     }
 
@@ -91,11 +93,12 @@ class LeagueController
             $id = $_POST['id'];
             $this->leagueDB->deleteForever($id);
             $message = "Delete Success";
+            header('refresh:2;view_league.php?page=backup_league');
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this league is deleted forever
                     </div>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
             echo "<a href='view_league.php' class='btn btn-info'>Go to list league</a>";
-            header('refresh:2;view_league.php?page=backup_league');
         }
     }
 
@@ -113,3 +116,5 @@ class LeagueController
         }
     }
 }
+?>
+<script src="/public/js/countdown.js"></script>

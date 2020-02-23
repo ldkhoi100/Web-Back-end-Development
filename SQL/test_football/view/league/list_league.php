@@ -1,5 +1,6 @@
     <h2>List league</h2>
     <a href="view_league.php?page=add"><button type="button" class="btn btn-success">Add new league</button></a>
+    <a href="view_league.php?page=backup_league" class="btn btn-info" style="float: right">Back Up</a>
     <br><br>
 
     <table class="table table-hover" id="employee_data">

@@ -77,7 +77,7 @@ class LeagueDB
         $result = $statement->fetchAll();
         $leagues = [];
         foreach ($result as $row) {
-            $league = new League($row['id_league'], $row['name_league'], $row['stadium'], $row['coach_name']);
+            $league = new League($row['id_league'], $row['name_league']);
             $league->id = $row['id_league'];
             $leagues[] = $league;
         }

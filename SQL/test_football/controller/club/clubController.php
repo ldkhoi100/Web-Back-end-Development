@@ -14,7 +14,7 @@ class ClubController
 
     public function __construct()
     {
-        $connection = new DBConnection("mysql:host=localhost;dbname=football", "root", "");
+        $connection = new DBConnection("mysql:host=localhost;dbname=football;charset=utf8", "root", "");
         $this->clubDB = new ClubDB($connection->connect());
     }
 
@@ -55,12 +55,13 @@ class ClubController
         } else {
             $id = $_POST['id'];
             $this->clubDB->backUpFileDeleted($id);
+            header('refresh:2;view_club.php?page=backup_club');
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club is backuped
                     </div>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
             echo "<a href='view_club.php' class='btn btn-info'>Go to list club</a>";
             //header('Location: view_club.php?page=backup_club');
-            header('refresh:2;view_club.php?page=backup_club');
         }
     }
 
@@ -76,11 +77,12 @@ class ClubController
             $message = "Delete Success";
             //include 'delete_club.php';
             //header('Location: view_club.php');
+            header("refresh:2;view_club.php");
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club is deleted
                     </div>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
             echo "<a href='view_club.php' class='btn btn-info'>Go to list club</a>";
-            header("refresh:2;view_club.php");
         }
     }
 
@@ -94,11 +96,12 @@ class ClubController
             $id = $_POST['id'];
             $this->clubDB->deleteForever($id);
             $message = "Delete Success";
+            header('refresh:2;view_club.php?page=backup_club');
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club is deleted forever
                     </div>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
             echo "<a href='view_club.php' class='btn btn-info'>Go to list club</a>";
-            header('refresh:2;view_club.php?page=backup_club');
         }
     }
 
@@ -116,3 +119,5 @@ class ClubController
         }
     }
 }
+?>
+<script src="/public/js/countdown.js"></script>

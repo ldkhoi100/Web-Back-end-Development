@@ -4,11 +4,11 @@ echo accessView();
 ?>
 <?php
 require "../../model/core/DBConnection.php";
-require "../../model/league/league.php";
-require "../../model/league/leagueDB.php";
-require "../../controller/league/leagueController.php";
+require "../../model/club_league/clubleague.php";
+require "../../model/club_league/clubleagueDB.php";
+require "../../controller/club_league/clubleagueController.php";
 
-use Controller\LeagueController;
+use Controller\ClubleagueController;
 
 ?>
 <!doctype html>
@@ -19,7 +19,8 @@ use Controller\LeagueController;
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Manager league</title>
+    <title>Manager Club-League</title>
+
     <!-- bootstrap link rel css -->
     <?php include '../../public/bootstrap/link_rel_bootstrap.php'; ?>
     <link rel="stylesheet" href="/public/css/view.css">
@@ -32,32 +33,23 @@ use Controller\LeagueController;
 
     <div class="container">
         <div class="navbar navbar-default">
-            <a class="navbar-brand" href="view_league.php">Home League Management</a>
+            <a class="navbar-brand" href="view_clubleague.php">Home Club-League Management</a>
         </div>
         <?php
-        $league = new LeagueController();
+        $clubleague = new ClubleagueController();
         $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : NULL;
         switch ($page) {
             case 'add':
-                $league->add();
+                $clubleague->add();
                 break;
             case 'delete':
-                $league->delete();
+                $clubleague->delete();
                 break;
             case 'edit':
-                $league->edit();
-                break;
-            case 'deleteForever':
-                $league->deleteForever();
-                break;
-            case 'backup_league':
-                $league->showBackup();
-                break;
-            case 'backupfile':
-                $league->backupFile();
+                $clubleague->edit();
                 break;
             default:
-                $league->index();
+                $clubleague->index();
                 break;
         }
         ?>

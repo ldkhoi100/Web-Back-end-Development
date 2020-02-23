@@ -23,6 +23,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/view/league/view_league.php">League</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/view/club_league/view_clubleague.php">Club-League</a>
+            </li>
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
