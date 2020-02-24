@@ -53,7 +53,7 @@ class LeagueController
         } else {
             $id = $_POST['id'];
             $this->leagueDB->backUpFileDeleted($id);
-            header('refresh:2;view_league.php?page=backup_league');
+            echo '<meta http-equiv="refresh" content="2;url=view_league.php?page=backup_league">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this league is backuped
                     </div>";
@@ -73,8 +73,7 @@ class LeagueController
             $id = $_POST['id'];
             $this->leagueDB->delete($id);
             $message = "Delete Success";
-            header("refresh:2;view_league.php");
-            //include 'delete_league.php';
+            echo '<meta http-equiv="refresh" content="2;url=view_league.php">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this league is deleted
                     </div>";
@@ -93,7 +92,7 @@ class LeagueController
             $id = $_POST['id'];
             $this->leagueDB->deleteForever($id);
             $message = "Delete Success";
-            header('refresh:2;view_league.php?page=backup_league');
+            echo '<meta http-equiv="refresh" content="2;url=view_league.php?page=backup_league">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this league is deleted forever
                     </div>";
@@ -112,7 +111,7 @@ class LeagueController
             $id = $_POST['id_league'];
             $league = new League($_POST['id_league'], $_POST['name_league']);
             $this->leagueDB->update($id, $league);
-            header('Location: view_league.php');
+            echo '<meta http-equiv="refresh" content="0;url=view_league.php">';
         }
     }
 }

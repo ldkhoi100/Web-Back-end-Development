@@ -7,6 +7,7 @@
         <div class="col-12">
             <form method="post">
 
+                <!-- Select ID club from table club-->
                 <div class="form-group">
                     <label>ID Club</label>
                     <select class="form-control" name="id_club">
@@ -17,18 +18,10 @@
                             echo "<option value=" . $row['id_club'] . ">" . $row['id_club'] . " - " . $row['name_club'] . "</option>";
                         }
                         ?>
-
-                        <!-- <?php
-                                $department_query = "SELECT * FROM club";
-                                $stmt = $connect->prepare($department_query);
-                                $stmt->execute();
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    echo "<option value='" . $row['$id_club'] . "'>" . $row['id_club'] . " - " . $row['name_club'] . "</option>";
-                                }
-                                ?> -->
                     </select>
                 </div>
 
+                <!-- Select ID league from table league -->
                 <div class="form-group">
                     <label>ID League</label>
                     <select class="form-control" name="id_league">
@@ -39,15 +32,6 @@
                             echo "<option value=" . $row['id_league'] . ">" . $row['id_league'] . " - " . $row['name_league'] . "</option>";
                         }
                         ?>
-
-                        <!-- <?php
-                                $department_query = "SELECT * FROM league";
-                                $stmt = $connect->prepare($department_query);
-                                $stmt->execute();
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    echo "<option value='" . $row['$id_league'] . "''>" . $row['id_league'] . " - " . $row['name_league'] . "</option>";
-                                }
-                                ?> -->
                     </select>
                 </div>
 

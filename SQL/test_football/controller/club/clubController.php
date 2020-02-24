@@ -55,7 +55,7 @@ class ClubController
         } else {
             $id = $_POST['id'];
             $this->clubDB->backUpFileDeleted($id);
-            header('refresh:2;view_club.php?page=backup_club');
+            echo '<meta http-equiv="refresh" content="2;url=view_club.php?page=backup_club">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club is backuped
                     </div>";
@@ -75,9 +75,7 @@ class ClubController
             $id = $_POST['id'];
             $this->clubDB->delete($id);
             $message = "Delete Success";
-            //include 'delete_club.php';
-            //header('Location: view_club.php');
-            header("refresh:2;view_club.php");
+            echo '<meta http-equiv="refresh" content="2;url=view_club.php">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club is deleted
                     </div>";
@@ -96,7 +94,7 @@ class ClubController
             $id = $_POST['id'];
             $this->clubDB->deleteForever($id);
             $message = "Delete Success";
-            header('refresh:2;view_club.php?page=backup_club');
+            echo '<meta http-equiv="refresh" content="2;url=view_club.php?page=backup_club">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club is deleted forever
                     </div>";
@@ -115,7 +113,7 @@ class ClubController
             $id = $_POST['id_club'];
             $club = new Club($_POST['id_club'], $_POST['name_club'], $_POST['stadium'], $_POST['coach_name']);
             $this->clubDB->update($id, $club);
-            header('Location: view_club.php');
+            echo '<meta http-equiv="refresh" content="0;url=view_club.php">';
         }
     }
 }

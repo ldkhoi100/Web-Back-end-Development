@@ -9,7 +9,6 @@ use Model\DBConnection;
 
 class ClubleagueController
 {
-
     public $clubleagueDB;
 
     public function __construct()
@@ -49,12 +48,12 @@ class ClubleagueController
             $id1 = $_POST['id1'];
             $id2 = $_POST['id2'];
             $this->clubleagueDB->delete($id1, $id2);
-            $message = "Delete Success";
-            header("refresh:2;view_clubleague.php");
+            echo '<meta http-equiv="refresh" content="2;url=view_clubleague.php">';
             echo "  <div class='alert alert-success'>
                         <strong>Success</strong>, this club-league is deleted
                     </div>";
-            echo "<a href='view_clubleague.php' class='btn btn-info'>Go to list club-league</a>";
+            echo "<p> Go home will start in <span id='ountdowntimer'>2 </span> Seconds <br><br>";
+            echo "<a href='view_clubleague.php' class='btn btn-info'>Go to list club</a>";
         }
     }
 
@@ -70,7 +69,10 @@ class ClubleagueController
             $id2 = $_POST['id2'];
             $clubleague = new Clubleague($_POST['id1'], $_POST['id2']);
             $this->clubleagueDB->update($id1, $id2, $clubleague);
-            header('Location: view_clubleague.php');
+            echo '<meta http-equiv="refresh" content="0;url=view_clubleague.php">';
         }
     }
 }
+?>
+
+<script src="/public/js/countdown.js"></script>
