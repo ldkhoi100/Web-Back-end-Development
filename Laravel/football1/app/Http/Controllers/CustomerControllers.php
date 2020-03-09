@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Session;
 
 class CustomerControllers extends Controller
 {
@@ -11,30 +14,7 @@ class CustomerControllers extends Controller
      */
     public function index()
     {
-        //Tạo mảng khách hàng
-        $customers = [
-            '0' => [
-                'id'  => 1,
-                'name' => 'customer1',
-                'bod' => '1998-09-01',
-                'email' => 'customer1@gmail.com'
-            ],
-
-            '1' => [
-                'id'  => 2,
-                'name' => 'customer2',
-                'bod' => '1998-09-01',
-                'email' => 'customer2@gmail.com'
-            ],
-
-            '2' => [
-                'id'  => 3,
-                'name' => 'customer3',
-                'bod' => '1998-09-01',
-                'email' => 'customer3@gmail.com'
-            ]
-        ];
-
+        $customers = Customer::all();
         //goi view va truyen du lieu sang view
         return view('customers.list', compact('customers'));
     }
@@ -44,7 +24,7 @@ class CustomerControllers extends Controller
      */
     public function create()
     {
-        echo "Hiển thị Form tạo khách hàng";
+        return view('customers.create');
     }
 
     /**
@@ -52,7 +32,20 @@ class CustomerControllers extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer;
+        $customer->name = request('name');
+        $customer->email = request('email');
+        $customer->dob = request('dob');
+        $path = $request->file('image')->getRealPath();
+        $logo = file_get_contents($path);
+        $base64 = base64_encode($logo);
+        $customer->image = $base64;
+        // $customer->image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+        // $customer->image = base64_encode(file_get_contents($request->file('image')));
+        $customer->save();
+        Session::flash('success', "Tạo mới khách hàng $customer->name thành công");
+        // return view('customers.create');
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -62,7 +55,8 @@ class CustomerControllers extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -72,7 +66,8 @@ class CustomerControllers extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -83,7 +78,13 @@ class CustomerControllers extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->name = request('name');
+        $customer->email = request('email');
+        $customer->dob = request('dob');
+        $customer->save();
+        Session::flash('success', "Cập nhật khách hàng $customer->name thành công");
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -93,6 +94,12 @@ class CustomerControllers extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+
+        //dung session de dua ra thong bao
+        Session::flash('success', 'Xóa khách hàng thành công');
+        //xoa xong quay ve trang danh sach khach hang
+        return redirect()->route('customers.index');
     }
 }

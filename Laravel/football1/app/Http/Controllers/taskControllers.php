@@ -12,14 +12,14 @@ class taskControllers extends Controller
     public function view()
     {
         //Lấy ra toàn bộ các task từ database thông qua truy vấn bằng Eloquent
-        $tasks = \App\Task::show();
+        $tasks = Task::all();
         // Trả về view index và truyền biến tasks chứa danh sách các task
-        return view('task.view', compact('tasks'));
+        return view('task.list', compact('tasks'));
     }
 
     public function create()
     {
-        return view('task.add');
+        return view('task.create');
     }
 
     public function store(Request $request)

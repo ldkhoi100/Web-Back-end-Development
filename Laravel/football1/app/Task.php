@@ -7,8 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    static function show()
-    {
-        return DB::table('tasks')->get();
-    }
+    protected $table = 'tasks';
 }

@@ -80,23 +80,6 @@ Route::resource('photos', 'PhotoController');
 
 // [Thực hành] Khởi tạo ứng dụng Task Management
 
-Route::group(['prefix' => 'customers'], function () {
-    // Hiển thị danh sách khách hàng
-    Route::get('/', 'CustomerControllers@index')->name('customers.index');
-    // Hiển thị Form tạo khách hàng
-    Route::get('create', 'CustomerControllers@create');
-    // Xử lý lưu dữ liệu tạo khách hàng thông qua phương thức POST từ form
-    Route::post('store', 'CustomerControllers@store');
-    // Hiển thị thông tin chi tiết khách hàng có mã định danh id
-    Route::get('{id}/show', 'CustomerControllers@show');
-    // Hiển thị Form chỉnh sửa thông tin khách hàng
-    Route::get('{id}/edit', 'CustomerControllers@edit');
-    // xử lý lưu dữ liệu thông tin khách hàng được chỉnh sửa thông qua PATCH từ form
-    Route::patch('{id}/update', 'CustomerControllers@update');
-    // Xóa thông tin dữ liệu khách hàng
-    Route::delete('{id}', 'CustomerControllers@destroy');
-});
-
 Route::get('player', 'football@index');
 
 
@@ -106,15 +89,20 @@ Route::match(['get', 'post'], '/email', 'EmailController@index');
 
 
 // [Thực hành] Ứng dụng Task Management với Blade Template
-Route::group(['prefix' => 'task'], function () {
-    //Index page
-    Route::get('/', function () {
-        return view('task.index');
-    })->name('index');
-    //Show list task
-    Route::get('/view', 'taskControllers@view')->name('tasks.view');
-    //Creat task
-    Route::get('/create', 'taskControllers@create')->name('tasks.create');
-    //store
-    Route::post('/store', 'taskControllers@store')->name('tasks.store');
-});
+// Route::group(['prefix' => 'task'], function () {
+//     //Index page
+//     Route::get('/', function () {
+//         return view('task.index');
+//     })->name('index');
+//     //Show list task
+//     Route::get('/view', 'taskControllers@view')->name('tasks.view');
+//     //Creat task
+//     Route::get('/create', 'taskControllers@create')->name('tasks.create');
+//     //store
+//     Route::post('/store', 'taskControllers@store')->name('tasks.store');
+// });
+
+Route::resource('task', 'taskControllers');
+
+// [Thực hành] Sử dụng Eloquent Ứng dụng quản lý khách hàng
+Route::resource('/customers', 'CustomerControllers');
