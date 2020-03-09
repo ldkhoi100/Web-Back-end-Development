@@ -1,0 +1,45 @@
+.form-control {
+  height: 30px;
+  color: violet;
+}
+
+@media (max-width: 457px) {
+  .images-shoes div.thumbnail {
+      width: calc(100% / 3);
+  }
+}
+
+@media (max-width: 300px) {
+  .images-shoes div.thumbnail {
+      width: calc(100% / 5);
+  }
+}
+
+footer {
+  color: black;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(85, 253, 253));
+  background-color: #eeeef4;
+  border-top: 3px solid black;
+  /* color: #fff;   */
+}
+
+div.thumbnail {
+  /*margin: 5px;*/
+  border: 1px solid #ccc;
+  float: left;
+  width: calc(100% / 2);
+}
+
+div.thumbnail:hover {
+  border: 1px solid #777;
+}
+
+div.thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
