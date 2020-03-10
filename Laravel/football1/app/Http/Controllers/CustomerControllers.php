@@ -36,12 +36,9 @@ class CustomerControllers extends Controller
         $customer->name = request('name');
         $customer->email = request('email');
         $customer->dob = request('dob');
-        // $customer->image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
         $customer->image = base64_encode(file_get_contents($request->file('image')->getRealPath()));
         $customer->save();
-        Session::flash('success', "Tạo mới khách hàng $customer->name thành công");
-        // return view('customers.create');
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', "Tạo mới khách hàng $customer->name thành công");
     }
 
     /**
@@ -78,13 +75,11 @@ class CustomerControllers extends Controller
         $customer->name = request('name');
         $customer->email = request('email');
         $customer->dob = request('dob');
-        // $customer->image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
         if ($request->hasFile('image')) {
             $customer->image = base64_encode(file_get_contents($request->file('image')->getRealPath()));
         }
         $customer->save();
-        Session::flash('success', "Cập nhật khách hàng $customer->name thành công");
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', "Cập nhật khách hàng $customer->name thành công");
     }
 
     /**
@@ -96,10 +91,7 @@ class CustomerControllers extends Controller
     {
         $customer = Customer::findOrFail($id);
         $customer->delete();
-
-        //dung session de dua ra thong bao
-        Session::flash('success', 'Xóa khách hàng thành công');
         //xoa xong quay ve trang danh sach khach hang
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', "Xóa khách hàng $customer->name thành công");
     }
 }

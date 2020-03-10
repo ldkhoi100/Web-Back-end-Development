@@ -1,4 +1,4 @@
-@extends('customers.home')
+@extends('layouts.app')
 @section('title', 'Danh sách khách hàng')
 @section('content')
 

@@ -1,4 +1,4 @@
-@extends('customers.home')
+@extends('layouts.app')
 @section('title', 'Chỉnh sửa khách hàng')
 @section('content')
 <div class="col-12 col-md-12">

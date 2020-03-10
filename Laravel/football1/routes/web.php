@@ -74,13 +74,7 @@ Route::get('/time/{timezone?}', function ($timezone = null) {
     return view('time');
 });
 
-
-// [Bài đọc] Resource Controller
-Route::resource('photos', 'PhotoController');
-
 // [Thực hành] Khởi tạo ứng dụng Task Management
-
-Route::get('player', 'football@index');
 
 
 // [Thực hành] Ứng dụng kiểm tra email hợp lệ
@@ -89,20 +83,24 @@ Route::match(['get', 'post'], '/email', 'EmailController@index');
 
 
 // [Thực hành] Ứng dụng Task Management với Blade Template
-// Route::group(['prefix' => 'task'], function () {
-//     //Index page
-//     Route::get('/', function () {
-//         return view('task.index');
-//     })->name('index');
-//     //Show list task
-//     Route::get('/view', 'taskControllers@view')->name('tasks.view');
-//     //Creat task
-//     Route::get('/create', 'taskControllers@create')->name('tasks.create');
-//     //store
-//     Route::post('/store', 'taskControllers@store')->name('tasks.store');
-// });
+Route::group(['prefix' => 'task'], function () {
+    //Index page
+    Route::get('/', function () {
+        return view('task.index');
+    })->name('index');
+    //Show list task
+    Route::get('/view', 'taskControllers@view')->name('tasks.view');
+    //Creat task
+    Route::get('/create', 'taskControllers@create')->name('tasks.create');
+    //store
+    Route::post('/store', 'taskControllers@store')->name('tasks.store');
+});
 
-Route::resource('task', 'taskControllers');
+// Route::resource('task', 'taskControllers');
 
-// [Thực hành] Sử dụng Eloquent Ứng dụng quản lý khách hàng
+// [Thực hành] Sử dụng Eloquent Ứng dụng quản lý khách hàng table customers
 Route::resource('/customers', 'CustomerControllers');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
