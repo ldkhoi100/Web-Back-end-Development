@@ -23,7 +23,7 @@
                 </thead>
                 <tbody>
                     @if(count($customers) == 0)
-                    <td colspan="4">Không có dữ liệu</td>
+                    <td colspan="5">Không có dữ liệu</td>
                     @else
                     @foreach ($customers as $key => $customer)
                     <tr>
@@ -31,7 +31,7 @@
                         <td>{{ $customer['name'] }}</td>
                         <td>{{ $customer['dob'] }}</td>
                         <td>{{ $customer['email'] }}</td>
-                        <td><img src="data:image/jpg;base64, {{$cusotmer->image}}" width="60px" height="60px">
+                        <td><img src="data:image;base64, {{$customer->image}}" width="60px" height="60px">
                         </td>
                         <td><a href="{{ route('customers.show', $customer->id) }}">Show</a></td>
                         <td><a href="{{ route('customers.edit', $customer->id) }}">sửa</a></td>

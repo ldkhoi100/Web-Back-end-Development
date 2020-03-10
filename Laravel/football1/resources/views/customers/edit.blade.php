@@ -22,6 +22,12 @@
                     <input type="date" class="form-control" name="dob" value="{{ $customer->dob }}" required>
                 </div>
 
+                <div class="form-group">
+                    <label>Image:</label>
+                    <input type="file" class="form-control" name="image" id="image">
+                    <img src="data:image;base64, {{$customer->image}}" width="60px" height="60px">
+                </div>
+
                 <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
                 <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy</button>
             </form>

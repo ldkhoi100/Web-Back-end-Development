@@ -36,12 +36,8 @@ class CustomerControllers extends Controller
         $customer->name = request('name');
         $customer->email = request('email');
         $customer->dob = request('dob');
-        $path = $request->file('image')->getRealPath();
-        $logo = file_get_contents($path);
-        $base64 = base64_encode($logo);
-        $customer->image = $base64;
         // $customer->image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-        // $customer->image = base64_encode(file_get_contents($request->file('image')));
+        $customer->image = base64_encode(file_get_contents($request->file('image')->getRealPath()));
         $customer->save();
         Session::flash('success', "Tạo mới khách hàng $customer->name thành công");
         // return view('customers.create');
@@ -82,6 +78,10 @@ class CustomerControllers extends Controller
         $customer->name = request('name');
         $customer->email = request('email');
         $customer->dob = request('dob');
+        // $customer->image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+        if ($request->hasFile('image')) {
+            $customer->image = base64_encode(file_get_contents($request->file('image')->getRealPath()));
+        }
         $customer->save();
         Session::flash('success', "Cập nhật khách hàng $customer->name thành công");
         return redirect()->route('customers.index');
